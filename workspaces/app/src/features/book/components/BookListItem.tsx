@@ -28,11 +28,10 @@ const _ImgWrapper = styled.div`
 `;
 
 type Props = {
-  bookId: string;
+  book: any;
 };
 
-export const BookListItem: React.FC<Props> = ({ bookId }) => {
-  const { data: book } = useBook({ params: { bookId } });
+export const BookListItem: React.FC<Props> = ({ book }) => {
 
   const imageUrl = useImage({ height: 64, imageId: book.image.id, width: 64 });
 
