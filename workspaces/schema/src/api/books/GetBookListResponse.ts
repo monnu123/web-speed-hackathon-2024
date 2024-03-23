@@ -11,6 +11,10 @@ export const GetBookListResponseSchema = createSelectSchema(book)
     nameRuby: true,
   })
   .extend({
+    author: createSelectSchema(author).pick({
+      id: true,
+      name: true,
+    }),
     image: createSelectSchema(image).pick({
       alt: true,
       id: true,
