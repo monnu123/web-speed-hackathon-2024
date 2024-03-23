@@ -17,14 +17,6 @@ export const GetAuthorResponseSchema = createSelectSchema(author)
         name: true,
       })
       .extend({
-        episodes: createSelectSchema(episode)
-          .pick({
-            chapter: true,
-            description: true,
-            id: true,
-            name: true,
-          })
-          .array(),
         image: createSelectSchema(image).pick({
           alt: true,
           id: true,
