@@ -8,11 +8,15 @@ import { Text } from './foundation/components/Text';
 import { ActionLayout } from './foundation/layouts/ActionLayout';
 import { CommonLayout } from './foundation/layouts/CommonLayout';
 import { Color, Space, Typography } from './foundation/styles/variables';
-import { AuthorDetailPage } from './pages/AuthorDetailPage';
-import { BookDetailPage } from './pages/BookDetailPage';
-import { EpisodeDetailPage } from './pages/EpisodeDetailPage';
-import { SearchPage } from './pages/SearchPage';
+// import { AuthorDetailPage } from './pages/AuthorDetailPage/AuthorDetailPage';
+// import { BookDetailPage } from './pages/BookDetailPage/BookDetailPage';
+// import { EpisodeDetailPage } from './pages/EpisodeDetailPage/EpisodeDetailPage';
+// import { SearchPage } from './pages/SearchPage/SearchPage';
 // import { TopPage } from './pages/TopPage/TopPage';
+const AuthorDetailPage = lazy(() => import('./pages/AuthorDetailPage'));
+const BookDetailPage = lazy(() => import('./pages/BookDetailPage'));
+const EpisodeDetailPage = lazy(() => import('./pages/EpisodeDetailPage'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
 const TopPage = lazy(() => import('./pages/TopPage'));
 
 const _BackToTopButton = styled(Link)`

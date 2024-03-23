@@ -1,0 +1,1 @@
+export { EpisodeDetailPage as default } from './EpisodeDetailPage';

@@ -1,0 +1,1 @@
+export { AuthorDetailPage as default } from './AuthorDetailPage';
