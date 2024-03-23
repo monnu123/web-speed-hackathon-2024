@@ -52,14 +52,6 @@ class AuthorRepository implements AuthorRepositoryInterface {
               name: true,
             },
             with: {
-              episodes: {
-                columns: {
-                  chapter: true,
-                  description: true,
-                  id: true,
-                  name: true,
-                },
-              },
               image: {
                 columns: {
                   alt: true,
