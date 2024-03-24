@@ -30,7 +30,7 @@ const _BackToTopButton = styled(Link)`
 
 export const Router: React.FC = () => {
   return (
-    <Suspense>
+    <Suspense fallback={null}>
       <Routes>
         <Route element={<CommonLayout />} path={'/'}>
           <Route element={<TopPage />} path={''} />
