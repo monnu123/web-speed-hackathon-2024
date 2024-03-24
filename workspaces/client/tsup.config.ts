@@ -55,12 +55,16 @@ export default defineConfig(async (): Promise<Options[]> => {
       },
       metafile: true,
       minify: true,
+      minifyWhitespace: true,
+      minifyIdentifiers: true,
+      minifySyntax: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
       shims: false,
       sourcemap: false,
       splitting: true,
-      target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
+
+      target: ['chrome58'],
       treeshake: true,
     },
   ];
