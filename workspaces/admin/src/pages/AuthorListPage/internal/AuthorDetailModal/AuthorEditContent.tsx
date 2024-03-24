@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
-import * as yup from 'yup';
+import { object, string, mixed } from 'yup';
 
 import type { GetAuthorResponse } from '@wsh-2024/schema/src/api/authors/GetAuthorResponse';
 
@@ -53,16 +53,14 @@ export const AuthorEditContent: React.FC<AuthorEditContentProps> = ({ author, on
         },
       );
     },
-    validationSchema: yup.object().shape({
-      description: yup.string().required('プロフィールを入力してください'),
-      image: yup
-        .mixed((image): image is File => image instanceof File)
+    validationSchema: object().shape({
+      description: string().required('プロフィールを入力してください'),
+      image: mixed((image): image is File => image instanceof File)
         .optional()
         .test('is-supported-image', '対応していない画像形式です', async (image) => {
           return image == null || (await isSupportedImage(image));
         }),
-      name: yup
-        .string()
+      name: string()
         .required('作者名を入力してください')
         .matches(/^[\p{Script_Extensions=Katakana}\s]+$/u, '作者名はカタカナで入力してください'),
     }),

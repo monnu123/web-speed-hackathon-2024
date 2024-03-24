@@ -21,7 +21,7 @@ import {
 import { useNavigate } from '@tanstack/react-router';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
-import * as yup from 'yup';
+import { number, string, object, mixed } from 'yup';
 
 import { encrypt } from '@wsh-2024/image-encrypt/src/encrypt';
 import type { GetBookResponse } from '@wsh-2024/schema/src/api/books/GetBookResponse';
@@ -91,18 +91,16 @@ export const EpisodeDetailEditor: React.FC<Props> = ({ book, episode }) => {
         });
       }
     },
-    validationSchema: yup.object().shape({
-      chapter: yup.number().required('章を入力してください'),
-      description: yup.string().required('あらすじを入力してください'),
-      image: yup
-        .mixed((image): image is File => image instanceof File)
+    validationSchema: object().shape({
+      chapter: number().required('章を入力してください'),
+      description: string().required('あらすじを入力してください'),
+      image: mixed((image): image is File => image instanceof File)
         .optional()
         .test('is-supported-image', '対応していない画像形式です', async (image) => {
           return image == null || (await isSupportedImage(image));
         }),
-      name: yup.string().required('エピソード名を入力してください'),
-      nameRuby: yup
-        .string()
+      name: string().required('エピソード名を入力してください'),
+      nameRuby: string()
         .required('エピソード名（ふりがな）を入力してください')
         .matches(/^[\p{Script_Extensions=Hiragana}]+$/u, 'ふりがなはひらがなで入力してください'),
     }),

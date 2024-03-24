@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
-import * as yup from 'yup';
+import { object, string, mixed } from 'yup';
 
 import type { GetBookResponse } from '@wsh-2024/schema/src/api/books/GetBookResponse';
 
@@ -55,17 +55,15 @@ export const BookEditContent: React.FC<BookEditContentProps> = ({ book, onEditCo
         },
       );
     },
-    validationSchema: yup.object().shape({
-      description: yup.string().required('概要を入力してください'),
-      image: yup
-        .mixed((image): image is File => image instanceof File)
+    validationSchema: object().shape({
+      description: string().required('概要を入力してください'),
+      image: mixed((image): image is File => image instanceof File)
         .optional()
         .test('is-supported-image', '対応していない画像形式です', async (image) => {
           return image == null || (await isSupportedImage(image));
         }),
-      name: yup.string().required('作品名を入力してください'),
-      nameRuby: yup
-        .string()
+      name: string().required('作品名を入力してください'),
+      nameRuby: string()
         .required('作品名のふりがなを入力してください')
         .matches(/^[\p{Script_Extensions=Hiragana}]+$/u, '作品名のふりがなはひらがなで入力してください'),
     }),
