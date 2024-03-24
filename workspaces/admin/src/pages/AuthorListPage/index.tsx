@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useId, useMemo, useState } from 'react';
-import _ from 'underscore';
 import { create } from 'zustand';
 
 import { useAuthorList } from '../../features/authors/hooks/useAuthorList';
@@ -43,17 +42,17 @@ type AuthorModalMode = (typeof AuthorModalMode)[keyof typeof AuthorModalMode];
 
 type AuthorModalState =
   | {
-      mode: typeof AuthorModalMode.None;
-      params: object;
-    }
+    mode: typeof AuthorModalMode.None;
+    params: object;
+  }
   | {
-      mode: typeof AuthorModalMode.Detail;
-      params: { authorId: string };
-    }
+    mode: typeof AuthorModalMode.Detail;
+    params: { authorId: string };
+  }
   | {
-      mode: typeof AuthorModalMode.Create;
-      params: object;
-    };
+    mode: typeof AuthorModalMode.Create;
+    params: object;
+  };
 
 type AuthorModalAction = {
   close: () => void;
@@ -70,7 +69,7 @@ export const AuthorListPage: React.FC = () => {
       kind: AuthorSearchKind.AuthorId as AuthorSearchKind,
       query: '',
     },
-    onSubmit() {},
+    onSubmit() { },
   });
 
   const filteredAuthorList = useMemo(() => {
@@ -184,7 +183,7 @@ export const AuthorListPage: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {_.map(filteredAuthorList, (author) => (
+                {filteredAuthorList.map((author) => (
                   <Tr key={author.id}>
                     <Td textAlign="center" verticalAlign="middle">
                       <Button colorScheme="teal" onClick={() => modalState.openDetail(author.id)} variant="solid">
