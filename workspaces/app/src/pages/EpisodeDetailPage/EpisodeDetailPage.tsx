@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import type { RouteParams } from 'regexparam';
-import invariant from 'tiny-invariant';
 
 import { EpisodeListItem } from '../../features/episode/components/EpisodeListItem';
 import { Box } from '../../foundation/components/Box';
@@ -14,8 +13,9 @@ import { useEpisodeList } from '../../features/episode/hooks/useEpisodeList';
 
 const EpisodeDetailPage: React.FC = () => {
   const { bookId, episodeId } = useParams<RouteParams<'/books/:bookId/episodes/:episodeId'>>();
-  invariant(bookId);
-  invariant(episodeId);
+  if (!bookId || !episodeId) {
+    throw new Error();
+  }
 
   const { data: episodeList } = useEpisodeList({ query: { bookId } });
 
