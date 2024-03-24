@@ -1,16 +1,13 @@
-import type * as CSS from 'csstype';
-import type { AriaAttributes } from 'react';
 import styled from 'styled-components';
 
 import { addUnitIfNeeded } from '../../lib/css/addUnitIfNeeded';
-import type { Color, Radius } from '../styles/variables';
 
 const _Box = styled.div<{
   $backgroundColor?: string;
   $bottom?: number;
   $color?: string;
-  $flexGrow?: CSS.Property.FlexGrow;
-  $flexShrink?: CSS.Property.FlexShrink;
+  $flexGrow?;
+  $flexShrink?;
   $height?: number | string;
   $left?: number;
   $m?: number;
@@ -22,9 +19,9 @@ const _Box = styled.div<{
   $mt?: number;
   $mx?: number;
   $my?: number;
-  $overflow?: CSS.Property.Overflow;
-  $overflowX?: CSS.Property.Overflow;
-  $overflowY?: CSS.Property.Overflow;
+  $overflow?;
+  $overflowX?;
+  $overflowY?;
   $p?: number;
   $pb?: number;
   $pl?: number;
@@ -67,15 +64,15 @@ const _Box = styled.div<{
 `;
 
 type Props = {
-  ['aria-label']?: AriaAttributes['aria-label'];
-  ['aria-labelledby']?: AriaAttributes['aria-labelledby'];
+  ['aria-label']?;
+  ['aria-labelledby'];
   as?: keyof JSX.IntrinsicElements;
-  backgroundColor?: Color;
+  backgroundColor?;
   bottom?: number;
   children: React.ReactNode;
-  color?: Color;
-  flexGrow?: CSS.Property.FlexGrow;
-  flexShrink?: CSS.Property.FlexShrink;
+  color?;
+  flexGrow?;
+  flexShrink?;
   height?: number | string;
   left?: number;
   m?: number;
@@ -87,18 +84,18 @@ type Props = {
   mt?: number;
   mx?: number;
   my?: number;
-  overflow?: CSS.Property.Overflow;
-  overflowX?: CSS.Property.Overflow;
-  overflowY?: CSS.Property.Overflow;
+  overflow?;
+  overflowX?;
+  overflowY?;
   p?: number;
   pb?: number;
   pl?: number;
-  position?: CSS.Property.Position;
+  position?;
   pr?: number;
   pt?: number;
   px?: number;
   py?: number;
-  radius?: Radius;
+  radius?;
   right?: number;
   top?: number;
   width?: number | string;

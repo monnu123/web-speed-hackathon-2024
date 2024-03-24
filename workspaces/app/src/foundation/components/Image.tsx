@@ -1,4 +1,3 @@
-import type * as CSS from 'csstype';
 import styled from 'styled-components';
 
 import { addUnitIfNeeded } from '../../lib/css/addUnitIfNeeded';
@@ -16,7 +15,7 @@ const _Image = styled.img<{
 
 type Props = {
   height: number | string;
-  objectFit: CSS.Property.ObjectFit;
+  objectFit;
   width: number | string;
 } & JSX.IntrinsicElements['img'];
 
